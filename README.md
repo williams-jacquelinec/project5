@@ -1,3 +1,5 @@
+! [BuildStatus] (https://github.com/williams-jacquelinec/Project5/workflows/Project5/badge.svg?event=push)
+
 # Project 5
 Implementation of KMeans and Silhouette Scoring
 

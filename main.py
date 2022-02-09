@@ -11,9 +11,10 @@ def main():
 
     # create tight clusters
     clusters, labels = make_clusters(scale=0.3)
+    print(clusters)
     plot_clusters(clusters, labels, filename="figures/tight_clusters.png")
 
-    # create loose clusters
+    # # create loose clusters
     clusters, labels = make_clusters(scale=2)
     plot_clusters(clusters, labels, filename="figures/loose_clusters.png")
 
