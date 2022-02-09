@@ -9,6 +9,7 @@ readme = "README.md"
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
+dependencies = ["numpy", "pytest", "scipy", "matplotlib"]
 
 [project.urls]
 Home = "https://github.com/williams-jacquelinec/project5"
