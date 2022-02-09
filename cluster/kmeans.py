@@ -73,7 +73,7 @@ class KMeans:
 
             # WAY TO BREAK WHILE LOOP:
             # calculating the MSE!
-            mean_squared_error = get_error(centroids_old, self.centroid)
+            mean_squared_error = self._get_error(centroids_old, self.centroid)
             print(mean_squared_error)
             mse_list.append(mean_squared_error)
 
@@ -134,7 +134,7 @@ class KMeans:
         return centroids  
 
         
-    def get_error(self, mat_original, mat_calculated) -> float:
+    def _get_error(self, mat_original, mat_calculated) -> float:
         """
         returns the final mean-squared error of the fit model
 
