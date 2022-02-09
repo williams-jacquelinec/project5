@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.spatial.distance import cdist
-from cluster import KMeans
+from .kmeans import KMeans
 
 class Silhouette:
     def __init__(self, metric: str = "euclidean"):
