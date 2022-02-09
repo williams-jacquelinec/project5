@@ -86,7 +86,7 @@ class KMeans:
             elif len(mse_list) == 1:
                 count += 1
 
-        return self.centroid
+        # return self.centroid
 
 
 
