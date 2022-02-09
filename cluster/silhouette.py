@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.spatial.distance import cdist
-from kmeans import get_centroids
+from cluster import KMeans
 
 class Silhouette:
     def __init__(self, metric: str = "euclidean"):
