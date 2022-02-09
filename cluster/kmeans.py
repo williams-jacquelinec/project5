@@ -74,7 +74,7 @@ class KMeans:
             # WAY TO BREAK WHILE LOOP:
             # calculating the MSE!
             mean_squared_error = self._get_error(centroids_old, self.centroid)
-            print(mean_squared_error)
+            # print(mean_squared_error)
             mse_list.append(mean_squared_error)
 
             if len(mse_list) > 1:

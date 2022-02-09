@@ -32,4 +32,4 @@ def test_silhouette():
     assert observations == scores
 
     # plotting results
-    plot_multipanel(clusters, labels, pred, scores)
+    # plot_multipanel(clusters, labels, pred, scores)

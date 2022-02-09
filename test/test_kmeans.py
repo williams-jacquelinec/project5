@@ -28,7 +28,7 @@ def test_kmeans():
     assert labels == observations 
 
     # plotting the results
-    plot_clusters(clusters, labels)
+    # plot_clusters(clusters, labels)
 
     # checking that the MSE of the fit model is less than the tol threshold
     # assert km.get_error(clusters) < self.tol
