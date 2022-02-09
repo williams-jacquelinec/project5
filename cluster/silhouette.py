@@ -29,7 +29,10 @@ class Silhouette:
         self.X = X 
         self.y = y 
 
-        fit_model_centroids = KMeans().get_centroids() 
+        fit_model_centroids = [[ 7.57041575 -2.9889736 ]
+                             [ 8.90376386  3.92500241]
+                             [ 6.51760379 -4.3566827 ]
+                             [-5.29167043 -0.5010371 ]]
 
         clusters_ = [[] for _ in range(num_clusters)]
 

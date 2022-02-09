@@ -86,6 +86,8 @@ class KMeans:
             elif len(mse_list) == 1:
                 count += 1
 
+        return self.centroid
+
 
 
     def predict(self, mat: np.ndarray) -> np.ndarray:
