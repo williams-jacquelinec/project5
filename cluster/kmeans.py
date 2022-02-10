@@ -67,14 +67,9 @@ class KMeans:
                 # adding original observation to respective cluster
                 self.clusters[min_index].append(self.mat[i])
 
-            # figure out the new centroids
-            centroids_old = self.centroid
-            self.centroid = self._private_get_centroids(self.clusters)
-
             # WAY TO BREAK WHILE LOOP:
             # calculating the MSE!
-            mean_squared_error = self._private_get_error(centroids_old, self.centroid)
-            # print(mean_squared_error)
+            mean_squared_error = self._private_get_error()
             mse_list.append(mean_squared_error)
 
             if len(mse_list) > 1:
@@ -85,6 +80,10 @@ class KMeans:
                     count += 1
             elif len(mse_list) == 1:
                 count += 1
+
+            # figure out the new centroids
+            centroids_old = self.centroid
+            self.centroid = self._private_get_centroids(self.clusters)
 
 
 
@@ -116,7 +115,7 @@ class KMeans:
 
 
         
-    def _private_get_error(self, mat_original, mat_calculated) -> float:
+    def _private_get_error(self) -> float:
         """
         returns the final mean-squared error of the fit model
 
@@ -124,12 +123,18 @@ class KMeans:
             float
                 the mean-squared error of the fit model
         """
-        self.mat_original = mat_original
-        self.mat_calculated = mat_calculated
+        overall_dist = 0
+        mse = 0
 
-        MSE = np.square(np.subtract(self.mat_original, self.mat_calculated)).mean()
+        for i in range(self.k):
+            point_to_cent = cdist([self.centroid[i]], self.clusters[i], self.metric)
 
-        return MSE
+            for j in point_to_cent[0]:
+                overall_dist += j
+
+            mse += overall_dist/len(self.clusters[i])
+
+        return mse 
 
     def _private_get_centroids(self, clusters) -> np.ndarray:
         """
@@ -146,6 +151,7 @@ class KMeans:
             centroids[idx] = cluster_mean
 
         return centroids 
+
 
 
 
