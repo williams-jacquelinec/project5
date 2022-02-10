@@ -1,6 +1,5 @@
 import numpy as np
 from scipy.spatial.distance import cdist
-# from .kmeans import KMeans
 
 class Silhouette:
     def __init__(self, metric: str = "euclidean"):
@@ -29,7 +28,7 @@ class Silhouette:
         self.X = X 
         self.y = y 
 
-        fit_model_centroids = [[ 7.57041575 -2.9889736 ], [ 8.90376386  3.92500241], [ 6.51760379 -4.3566827 ], [-5.29167043 -0.5010371 ]]
+        num_clusters = len(set(self.y))
 
         clusters_ = [[] for _ in range(num_clusters)]
 
@@ -41,6 +40,13 @@ class Silhouette:
         # initialize what point belongs in what cluster
         for x in range(self.X.shape[0]):
             clusters_[self.y[x]].append(self.X[x])
+
+        # generating centroids of fit model
+        fit_model_centroids = np.zeros((num_clusters, self.X.shape[1]))
+   
+        for idx, cluster in enumerate(clusters_):  
+            cluster_mean = np.mean(cluster, axis=0)
+            fit_model_centroids[idx] = cluster_mean
 
         
         # silhouette score = (b(j) - a(j))/max{a(j), b(j)}
@@ -66,7 +72,8 @@ class Silhouette:
             sorted_dist_to_cent = np.sort(dist_to_cent)
 
             min_distance = sorted_dist_to_cent[0][1]
-            min_distance_idx = dist_to_cent[0].index(min_distance)
+            min_distance_idx = np.where(dist_to_cent[0] == min_distance)
+            min_distance_idx = int(list(min_distance_idx)[0][0])
 
             # calculating mean distance to points in closest cluster
             dist_to_closest_cluster = cdist([self.X[i]], clusters_[min_distance_idx], self.metric)

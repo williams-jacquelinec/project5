@@ -86,7 +86,6 @@ class KMeans:
             elif len(mse_list) == 1:
                 count += 1
 
-        # return self.centroid
 
 
 
@@ -116,7 +115,7 @@ class KMeans:
         return cluster_labels
 
 
-    def _new_centroids(self, clusters):
+    def _new_centroids(self, cluster_mat):
         """
         This function returns the new centroids of k clusters.
 
@@ -144,16 +143,6 @@ class KMeans:
             float
                 the mean-squared error of the fit model
         """
-
-        # will error be calculated for each cluster or averaged over the k clusters after each iteration?
-        # do you only calculate this at the end of all iterations? and then call this function in the predict() function?
-        # is this used on the centroids (since they change after every iteration, more or less)
-
-        # calculate mean squared error between old centroids and newly assigned centroids?
-
-        # self.mat_original = centroids_old
-        # self.mat_calculated = self.centroid
-
         self.mat_original = mat_original
         self.mat_calculated = mat_calculated
 
@@ -170,88 +159,6 @@ class KMeans:
                 a `k x m` 2D matrix representing the cluster centroids of the fit model
         """
         return self.centroid
-
-
-
-# from utils import make_clusters
-# from silhouette import score
-
-# clusters, labels = make_clusters(k=4, scale=1)
-# print(clusters[0])
-
-# random_distance = cdist([clusters[0]], clusters[0:3], 'euclidean')
-# print(random_distance)
-# print(np.sort(random_distance))
-# km = KMeans(k=4)
-# km_fit = km.fit(clusters)
-# print((km_fit))
-
-# assert cluster != km_fit
-
-# pred = km.predict(clusters)
-# print(pred)
-# print(pred)
-
-# sil_score = km.score(clusters, pred)
-# print(sil_score)
-
-
-
-
-
-
-
-
-
-
-
-
-        # print("og distance matrix")
-        # print(distance_matrix)
-
-        # #assigning minimum distances to respective clusters
-        # for i in range(distance_matrix.shape[0]):
-
-        #     # calculating the index of the minimum value
-        #     min_index = np.argmin(distance_matrix[i])
-            
-        #     # adding original observation to respective cluster
-        #     self.clusters[min_index].append(self.mat[i])
-
-
-
-
-        # return self.clusters[0]
-        # print("sorted distance matrix")
-        # print(np.sort(distance_matrix))
-        # return self.centroid
-        # print(cluster_labels)
-
-
-            # count += 1
-
-            # centroids_dist = cdist(centroids_old, self.centroid, self.metric)
-            # # print(centroids_old)
-            # # print(self.centroid)
-            # # print(centroids_dist)
-            # _cent_dist = 0
-            # for i in range(len(centroids_dist)):
-            #     _cent_dist += centroids_dist[i][i]
-            #     # print(centroids_dist[i][i])
-
-            # # print(_cent_dist)
-
-            # if _cent_dist == 0:
-            #     count += self.max_iter
-            # else:
-            #     count += 1
-
-            # print(count)
-
-        # after the while loop is complete, calculate the mean-squared errors
-
-        # finally, return the self.centroid (but maybe you don't need to do this)
-        # return self.centroid
 
 
 

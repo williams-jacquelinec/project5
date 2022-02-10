@@ -29,7 +29,5 @@ def test_silhouette():
     observations = clusters.shape[0]
     _scores_ = len(scores)
 
-    assert observations == scores
+    assert observations == _scores_
 
-    # plotting results
-    # plot_multipanel(clusters, labels, pred, scores)

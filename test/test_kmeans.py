@@ -14,8 +14,6 @@ def test_kmeans():
     """
     This method is to test the functionality of the kmeans algorithm
     """
-
-
     clusters, labels = make_clusters(k=4, scale=1)
     km = KMeans(k=4)
     km.fit(clusters)
@@ -27,10 +25,7 @@ def test_kmeans():
 
     assert labels == observations 
 
-    # plotting the results
-    # plot_clusters(clusters, labels)
-
-    # checking that the MSE of the fit model is less than the tol threshold
-    # assert km.get_error(clusters) < self.tol
+    # checking that the number of unique labels is equal to the number of clusters
+    assert len(set(pred)) == 4
     
     
