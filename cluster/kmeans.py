@@ -130,7 +130,7 @@ class KMeans:
             point_to_cent = cdist([self.centroid[i]], self.clusters[i], self.metric)
 
             for j in point_to_cent[0]:
-                overall_dist += j
+                overall_dist += j**2
 
             mse += overall_dist/len(self.clusters[i])
 
