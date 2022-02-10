@@ -28,6 +28,7 @@ class Silhouette:
         self.X = X 
         self.y = y 
 
+        # number of unique values is 1D y array = number of labels = number of clusters
         num_clusters = len(set(self.y))
 
         clusters_ = [[] for _ in range(num_clusters)]

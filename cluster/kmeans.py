@@ -69,11 +69,11 @@ class KMeans:
 
             # figure out the new centroids
             centroids_old = self.centroid
-            self.centroid = self._new_centroids(self.clusters)
+            self.centroid = self._private_get_centroids(self.clusters)
 
             # WAY TO BREAK WHILE LOOP:
             # calculating the MSE!
-            mean_squared_error = self._get_error(centroids_old, self.centroid)
+            mean_squared_error = self._private_get_error(centroids_old, self.centroid)
             # print(mean_squared_error)
             mse_list.append(mean_squared_error)
 
@@ -115,27 +115,8 @@ class KMeans:
         return cluster_labels
 
 
-    def _new_centroids(self, cluster_mat):
-        """
-        This function returns the new centroids of k clusters.
-
-        input:
-            clusters: np.ndarray
-                2-D matrix of clusters
-        output:
-            centroids: np.ndarray
-                2-D matrix of new centroids
-        """
-        centroids = np.zeros((self.k, self.mat.shape[1]))
-   
-        for idx, cluster in enumerate(self.clusters):  
-            cluster_mean = np.mean(cluster, axis=0)
-            centroids[idx] = cluster_mean
-
-        return centroids  
-
         
-    def _get_error(self, mat_original, mat_calculated) -> float:
+    def _private_get_error(self, mat_original, mat_calculated) -> float:
         """
         returns the final mean-squared error of the fit model
 
@@ -150,7 +131,7 @@ class KMeans:
 
         return MSE
 
-    def get_centroids(self) -> np.ndarray:
+    def _private_get_centroids(self, clusters) -> np.ndarray:
         """
         returns the centroid locations of the fit model
 
@@ -158,7 +139,13 @@ class KMeans:
             np.ndarray
                 a `k x m` 2D matrix representing the cluster centroids of the fit model
         """
-        return self.centroid
+        centroids = np.zeros((self.k, self.mat.shape[1]))
+   
+        for idx, cluster in enumerate(self.clusters):  
+            cluster_mean = np.mean(cluster, axis=0)
+            centroids[idx] = cluster_mean
+
+        return centroids 
 
 
 
